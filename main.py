@@ -34,3 +34,17 @@ plt.ylabel("Count")
 plt.title("Mentions of characters in the Fellowship of the Ring")
 plt.show()
 
+# Count the occurrences of specific locations
+locations = ["hobbiton", "rivendell", "edoras", "tirith", "mordor", "helm's", "rohan"]
+loc_count = {}
+for location in locations:
+    loc_count[location] = books_data.count(location)
+loc_count = pd.DataFrame.from_dict(loc_count, orient='index', columns=['count'])
+loc_count = loc_count.sort_values(by=['count'], ascending=False)
+
+# Plot the location counts
+loc_count.plot(kind="bar", color="blue")
+plt.xlabel("Location")
+plt.ylabel("Count")
+plt.title("Mentions of locations in the Fellowship of the Ring")
+plt.show()
